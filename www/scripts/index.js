@@ -11,7 +11,13 @@
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
-        
+        document.getElementById("btnTakePhoto").onclick = function () {
+            navigator.camera.getPicture(function (imageUri) {
+                var lastPhotoContainer = document.getElementById("lastPhoto");
+                alert("Looking ok");
+                lastPhotoContainer.innerHTML = "<img src='" + imageUri + "' style='width: 75%;'>"
+            }, null, null);
+        }
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
         var element = document.getElementById("deviceready");
         element.innerHTML = 'Device Ready';
